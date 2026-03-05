@@ -5,15 +5,14 @@ import com.exceptionhandling.*;
 import com.validatorclass.*;
 import java.io.IOException;
 
-public class RegistrationService {
-    private Scanner sc;
 
-    public RegistrationService() {
-        this.sc = new Scanner(System.in);
-    }
+//Registartion service class
+public class RegistrationService {
+    
 
     public void registerNewEmployee() {
-        System.out.println("=== USE CASE 1: EMPLOYEE REGISTRATION ===");
+        System.out.println("=== EMPLOYEE REGISTRATION ===");
+        Scanner sc = new Scanner(System.in); 
 
         try {
             System.out.print("Enter Employee ID (EMP-XXXX): ");
@@ -38,7 +37,7 @@ public class RegistrationService {
             String password = sc.nextLine();
 
             // Coordinate object creation (Composition)
-            UserAccount account = new UserAccount(username, password);
+            UserAccount account = new UserAccount(username, password); 
             Employee emp = new Employee(empId, name, email, phone, account);
             
             // Persist the data

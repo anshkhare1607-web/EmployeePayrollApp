@@ -1,17 +1,23 @@
 package com.userregistration;
 
+import com.authentication.*;
+
 //UserAccount Class 
-class UserAccount {
- private String username;
- private String password;
+public abstract class User {
+	protected String username;
+	protected String passwordHash;
+	protected String role;
 
- public UserAccount(String username, String password) {
-     this.username = username;
-     this.password = password;
- }
-
- //Override
- public String toString() {
-     return "Username: " + username;
- }
+	public User(String username, String passwordHash, String role) {
+		this.username = username;
+		this.passwordHash = PasswordUtil.hash(passwordHash);
+		this.role = role;
+	} 
+	
+	//abstract method
+	public abstract boolean authenticate(String username, String password);
+	
+	public String getRole() {
+		return role;
+	}
 }
