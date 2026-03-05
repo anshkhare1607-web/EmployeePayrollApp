@@ -20,6 +20,16 @@ public class Employee {
 		this.account = account;
 	}
 
+	
+	public String getEmpId() {
+		return empId;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
 	//file writing
 	public void persist() throws IOException {
 		try (PrintWriter out = new PrintWriter(new FileWriter("employee_data.txt", true))) {

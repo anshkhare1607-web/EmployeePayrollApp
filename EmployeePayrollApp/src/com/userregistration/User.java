@@ -20,4 +20,7 @@ public abstract class User {
 	public String getRole() {
 		return role;
 	}
+	public String getUserName() {
+		return username;
+	}
 }

@@ -4,10 +4,15 @@ import java.util.Scanner;
 import com.exceptionhandling.*;
 import com.validatorclass.*;
 import java.io.IOException;
+import com.authentication.*;
 
 
 //Registartion service class
 public class RegistrationService {
+	private AuthenticationService auth;
+	public RegistrationService(AuthenticationService auth) {
+		this.auth = auth;
+	}
     
 
     public void registerNewEmployee() {
@@ -35,6 +40,11 @@ public class RegistrationService {
 
             System.out.print("Create Password: ");
             String password = sc.nextLine();
+            
+            System.out.println("Select the role : (1. Manager | 2. Employee)");
+            System.out.print("Enter the choice : ");
+            String roleChoice  =sc.nextLine();
+            
 
             // Coordinate object creation (Composition)
             UserAccount account = new UserAccount(username, password); 
@@ -42,6 +52,12 @@ public class RegistrationService {
             
             // Persist the data
             emp.persist();
+            if(roleChoice.equals("1")) {
+            	auth.addUser(new Manager(username,password));
+            }
+            else {
+            	auth.addUser(new RegularEmployee(username,password)); 
+            }
 
             System.out.println("\nEmployee Registered Successfully:");
             System.out.println(emp);

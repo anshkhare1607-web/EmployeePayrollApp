@@ -11,9 +11,9 @@ public class AuthenticationService {
     private Map<String, User> users = new HashMap<>(); //for storing user and its credentials
     private int maxAttempts = 3; //max attempts for security purpose
 
-    public AuthenticationService() {
-        users.put("emp1", new RegularEmployee("emp1", "Emp@1234")); //hardcoded ids for testing purpose
-        users.put("manager1", new Manager("manager1", "Mng@1234"));
+    
+    public void addUser(User user) {
+    	users.put(user.getUserName(), user);
     }
 
     public Session login() {
@@ -31,10 +31,11 @@ public class AuthenticationService {
 
             if (user != null && user.authenticate(inputUsername, inputPassword)) { //authenticating input details
                 System.out.println("Login successful!");
+                System.out.println("Role : "+user.getRole());
                 showDashboard(user.getRole());
-                return new Session(inputUsername); //creating new session for the user
-            } else {
-                attempts++;
+                return new Session(inputUsername, user.getRole()); //creating new session for the user
+            } else { 
+                attempts++; 
                 System.out.println("Invalid credentials. Attempts remaining: " + (maxAttempts - attempts));
             }
         }
