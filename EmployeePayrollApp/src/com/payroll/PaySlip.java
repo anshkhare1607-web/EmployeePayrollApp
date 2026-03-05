@@ -17,6 +17,12 @@ public class PaySlip implements Cloneable {
     public String getEmpId() {
         return employee.getEmpId();
     }
+    public String getMonth() {
+    	return month;
+    }
+    public double getNetPay() {
+    	return components.netPay;
+    }
 
     @Override
     public Object clone() {

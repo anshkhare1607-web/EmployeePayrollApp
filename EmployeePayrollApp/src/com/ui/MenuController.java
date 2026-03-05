@@ -9,6 +9,7 @@ import java.nio.file.*;
 import com.userregistration.*;
 import com.authentication.*;
 import com.payroll.*;
+import com.dashboard.*;
 
 public class MenuController {
     private Scanner scanner;
@@ -16,6 +17,7 @@ public class MenuController {
     private RegistrationService registrationService;
     private PayRollService payrollService;
     private PaySlipDownloadService downloadService;
+    private DashboardService dashboardService;
 
     // setting up services
     public MenuController() {
@@ -24,6 +26,7 @@ public class MenuController {
         this.registrationService = new RegistrationService(authService);
         this.payrollService = new PayRollService();
         this.downloadService = new PaySlipDownloadService();
+        this.dashboardService = new DashboardService();
     }
 
     // the main loop 
@@ -82,14 +85,15 @@ public class MenuController {
             System.out.println("\n=== " + session.getRole() + " DASHBOARD ===");
             System.out.println("1. Generate Payslip (UC3)");
             System.out.println("2. Print / Download Payslip (UC4)");
+            System.out.println("3. View Analytics Dashboard (UC5)");
             
             // managers extra options
             if (session.getRole().equals("MANAGER")) {
-                System.out.println("3. View All Employees");
-                System.out.println("4. Logout");
+                System.out.println("4. View All Employees");
+                System.out.println("5. Logout");
             } else {
                 // regular employees see logout as option 3
-                System.out.println("3. Logout");
+                System.out.println("4. Logout");
             }
             
             System.out.print("Select an option: ");
@@ -101,7 +105,12 @@ public class MenuController {
             } else if (dashChoice.equals("2")) {
                 // payslip download
                 downloadService.runDownloadFlow(scanner);
-            } else if (session.getRole().equals("MANAGER") && dashChoice.equals("3")) {
+              
+            } 
+            else if(dashChoice.equals("3")) {
+            	dashboardService.runDashboardFlow(scanner);
+            }
+            else if (session.getRole().equals("MANAGER") && dashChoice.equals("3")) {
                 System.out.println("\n--- List of All Employees ---");
                 try {
                     // Prinitng all employees list
@@ -110,8 +119,8 @@ public class MenuController {
                     // file probably doesn't exist yet, no big deal
                     System.out.println("No employee records found.");
                 }
-            } else if ((session.getRole().equals("MANAGER") && dashChoice.equals("4")) || 
-                       (!session.getRole().equals("MANAGER") && dashChoice.equals("3"))) {
+            } else if ((session.getRole().equals("MANAGER") && dashChoice.equals("5")) || 
+                       (!session.getRole().equals("MANAGER") && dashChoice.equals("4"))) {
                 loggedIn = false;
                 System.out.println("\nLogged out successfully.");
             } else {
