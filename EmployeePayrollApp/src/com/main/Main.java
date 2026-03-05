@@ -1,9 +1,9 @@
 /*
  * EMPLOYEE PAYROLL MANAGEMENT APP
  * 
- * Use Case 05 - Display Dashboard
+ * Use Case 05 - Input Validation
  * @author : Developer
- * version : 5.0
+ * version : 6.0
  * 
  */
 
