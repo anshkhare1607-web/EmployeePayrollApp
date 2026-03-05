@@ -1,28 +1,13 @@
-Use Case 4: Payslip Print / Download
-Key Concepts:
+Use Case 6: Input Validation Key Concepts:
 
-equals() & hashCode() contract implementation
-Cloning (shallow vs deep copy)
-Immutable objects for downloads
-File I/O operations
-Object comparison
-Key Requirements:
+Exception inheritance hierarchy Custom exception classes RegEx pattern matching Input sanitization Fail-fast validation Key Requirements:
 
-Create independent payslip copy
-Generate unique filenames
-Preserve original data integrity
-Support PDF/text formats
-Download expiry mechanism
+Email format validation Phone number validation Password strength rules Employee ID patterns User-friendly error messages
 
 Key Benefits:
 
-Data safety (no original modification)
-Proper object deduplication
-Professional file naming
-Multiple format support
-Version control ready
-Goal: Generate downloadable payslip copy.
+Centralized validation logic Type-safe exception handling Consistent error messaging Reusable validation utilities Security through sanitization Goal: Validate all user inputs robustly.
 
-Actors: Authenticated Employee, FileService
+Actors: All Users, ValidationService
 
-Flow: Clone → Validate → Name → Save → Print
+Flow: Input → RegEx check → Exception/Accept
