@@ -1,8 +1,10 @@
+
 # Employee Payroll Management System
 
 ## Description
 
 The Employee Payroll Management System is a Java-based console application designed to manage employee registration, authentication, payroll processing, and payslip management. The system supports role-based access for employees and managers, with comprehensive input validation and secure data handling.
+
 
 ## Features
 
@@ -44,5 +46,6 @@ src/
 │   ├── userregistration/   # User models and registration services
 │   └── validatorclass/     # Validation utilities
 ```
+
 
 

@@ -1,1 +1,7 @@
 *.class
+.metadata/
+*.classpath
+*.project
+.settings/
+*.pdf
+employee_data.txt
