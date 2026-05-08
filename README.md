@@ -3,6 +3,13 @@
 
 ## Description
 
+Use Case 6: Input Validation Key Concepts:
+
+Exception inheritance hierarchy Custom exception classes RegEx pattern matching Input sanitization Fail-fast validation Key Requirements:
+
+Email format validation Phone number validation Password strength rules Employee ID patterns User-friendly error messages
+
+
 The Employee Payroll Management System is a Java-based console application designed to manage employee registration, authentication, payroll processing, and payslip management. The system supports role-based access for employees and managers, with comprehensive input validation and secure data handling.
 
 
@@ -46,6 +53,3 @@ src/
 │   ├── userregistration/   # User models and registration services
 │   └── validatorclass/     # Validation utilities
 ```
-
-
-
